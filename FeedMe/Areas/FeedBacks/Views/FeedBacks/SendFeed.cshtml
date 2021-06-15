@@ -1,0 +1,197 @@
+﻿@model FeedMe.Models.Models.FeedBack
+@{
+    ViewData["Title"] = "SendFeed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+        <a asp-area="Cooperation" asp-controller="Cooperation" asp-action="CooperationReq" class="nav-link active">Do you want to work with us?</a>
+    </li>
+</ul>
+<br />
+<form id="SendFeeds" asp-action="SendFeed" class="needs-validation" novalidate enctype="multipart/form-data">
+    <fieldset>
+        <div class="row px-2 mx-2 backgroundWhite border">
+            <div class="col-12">
+
+                <h2>FeedUs</h2>
+                <br />
+            </div>
+            <div class="col-9">
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label class="sfeedlbl" id="BehVal">Beh what was that?</label>
+                        <br />
+                        <span asp-validation-for="behavior" class="field-validation-valid text-danger"> </span>
+                    </div>
+                    <div class="rating col-8">
+                        <input type="radio" class="RatingStar" data-value="5" id="5"><label for="5">☆</label>
+                        <input type="radio" class="RatingStar" data-value="4" id="4"><label for="4">☆</label>
+                        <input type="radio" class="RatingStar" data-value="3" id="3"><label for="3">☆</label>
+                        <input type="radio" class="RatingStar" data-value="2" id="2"><label for="2">☆</label>
+                        <input type="radio" class="RatingStar" data-value="1" id="1"><label for="1">☆</label>
+
+                    </div>
+                </div>
+                <input type="hidden" name="behavior" id="RatingValue" />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label class="sfeedlbl">Trans what was that?</label>
+                        <br />
+                        <span asp-validation-for="Transportation" class="text-danger"></span>
+                    </div>
+                    <div class="rating col-8">
+                        <input type="radio" class="RatingStarTr" data-value="5" id="6"><label for="6">☆</label>
+                        <input type="radio" class="RatingStarTr" data-value="4" id="7"><label for="7">☆</label>
+                        <input type="radio" class="RatingStarTr" data-value="3" id="8"><label for="8">☆</label>
+                        <input type="radio" class="RatingStarTr" data-value="2" id="9"><label for="9">☆</label>
+                        <input type="radio" class="RatingStarTr" data-value="1" id="10"><label for="10">☆</label>
+
+                    </div>
+                </div>
+                <input type="hidden" name="Transportation" id="RatingValueTr" value="" />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label class="sfeedlbl">Services what was that?</label>
+                        <br />
+                        <span asp-validation-for="Services" class="text-danger"></span>
+                    </div>
+                    <div class="rating col-8">
+                        <input type="radio" class="RatingStarSrv" data-value="5" id="11"><label for="11">☆</label>
+                        <input type="radio" class="RatingStarSrv" data-value="4" id="12"><label for="12">☆</label>
+                        <input type="radio" class="RatingStarSrv" data-value="3" id="13"><label for="13">☆</label>
+                        <input type="radio" class="RatingStarSrv" data-value="2" id="14"><label for="14">☆</label>
+                        <input type="radio" class="RatingStarSrv" data-value="1" id="15"><label for="15">☆</label>
+
+                    </div>
+                </div>
+                <input type="hidden" name="Services" id="RatingValueSrv" value="" />
+                <br />
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Introduce"></label>
+                    </div><div class="col-8">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="introduce" asp-for="Introduce" id="exampleRadios1" value="false">
+                            <label class="form-check-label" for="exampleRadios1">
+                                i didn't!
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="introduce" asp-for="Introduce" id="exampleRadios2" value="true">
+                            <label class="form-check-label" for="exampleRadios2">
+                                I did.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="WhyUS"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="WhyUS" class="form-control" id="whyUsVal">
+                        <span asp-validation-for="WhyUS" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label for="exampleSelect1" class="form-label mt-4">haw Knopw Us?</label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="HowKnow" class="form-select" id="exampleSelect1">
+                            <option value="" selected disabled>Please select</option>
+                            <option value="1">Friends</option>
+                            <option value="2">Family</option>
+                            <option value="3">Social media</option>
+                            <option value="4">Tv</option>
+                            <option value="5">partner</option>
+                        </select>
+                        <span asp-validation-for="HowKnow" class="text-danger"></span>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="form-group row">
+                    <div class="col-3"><label asp-for="Suggestions"></label></div>
+
+                    <div class="col-8">
+
+                        <textarea asp-for="Suggestions" class="form-control" id="SuggVal"></textarea>
+                        <span asp-validation-for="Suggestions" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary" id="btnFeed" onsubmit="return VerifyRating()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+@section Scripts{
+
+    <script>
+        $(".RatingStar").click(function () {
+
+            var starVlue = $(this).attr("data-value");
+            $("#RatingValue").val(starVlue);
+        });
+        $(".RatingStarTr").click(function () {
+
+            var starVlue = $(this).attr("data-value");
+            $("#RatingValueTr").val(starVlue);
+        });
+        $(".RatingStarSrv").click(function () {
+
+            var starVlue = $(this).attr("data-value");
+            $("#RatingValueSrv").val(starVlue);
+        });
+
+        $("#btnFeed").click(function () {
+
+            var WhyusValue = $("#whyUsVal").val();
+            var SuggestionValue = $("#SuggVal").val();
+            if (WhyusValue == 0 || SuggestionValue == 0) {
+                swal({
+                    text: "please Fill All properties",
+
+                });
+                return false;
+            };
+
+            var StarRatingValue = $("#RatingValue").val();
+            var StarRatingValueTr = $("#RatingValueTr").val();
+            var StarRatingValueSrv = $("#RatingValueSrv").val();
+            if (StarRatingValue == 0 || StarRatingValueTr == 0 || StarRatingValueSrv == 0) {
+                swal({
+                    text: "please Fill The rating Star",
+                });
+                return false;
+
+
+            }
+            else {
+             
+                swal({
+                    icon: "success",
+                    text:"Thanks"
+                });
+
+                
+
+
+            }
+        });
+
+    </script>
+}

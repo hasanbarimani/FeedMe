@@ -1,0 +1,76 @@
+﻿@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+@model FeedMe.Models.ViewModels.CooperationViewModel
+@{
+    ViewData["Title"] = "Cooperation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+        <a asp-area="FeedBacks" asp-controller="FeedBacks" asp-action="SendFeed" class="nav-link active">Do you want to Feed us?</a>
+    </li>
+</ul>
+<form method="post" asp-action="CooperationReq" enctype="multipart/form-data">
+
+    <fieldset>
+        <div class="row px-2 mx-2 backgroundWhite border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-12">
+
+                <h2>Cooperation</h2>
+                <br />
+            </div>
+            <div class="col-8">
+                <div class="form-group row">
+
+                    <div class="col-8">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+
+                    </div>
+                </div> <br />
+                <div class="form-group row">
+
+                    <div class="col-8">
+                        <label asp-for="Text"></label>
+                        <textarea asp-for="Text" class="form-control"></textarea>
+                        <span asp-validation-for="Text" class="text-danger"></span>
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+
+                    <div class="col-8">
+                        <label asp-for="UploadFile"></label>
+                        <input asp-for="UploadFile" type="file" value="@Model.UploadFile" class="form-control" formenctype="multipart/form-data" />
+                        <span asp-validation-for="UploadFile" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </div>
+                </div>
+                <input type="hidden" name="captcha" id="captcha" />
+            </div>
+        </div>
+    </fieldset>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://www.google.com/recaptcha/api.js?render=@Configuration["googleReCaptcha:SiteKey"]"></script>
+    <script>
+        grecaptcha.ready(function() {
+            window.grecaptcha.execute('@Configuration["googleReCaptcha:SiteKey"]', { action: 'home' }).then(function (token) {
+                $("#captcha").val(token);
+                console.log(token);
+            });
+        });
+    </script>
+
+}

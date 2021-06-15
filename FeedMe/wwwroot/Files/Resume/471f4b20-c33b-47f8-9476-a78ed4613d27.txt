@@ -1,0 +1,15 @@
+﻿╔═══╗─────╔═╗─╔╗─╔═══╗╔═══╗────╔═══╗
+║╔═╗║─────║╔╝╔╝╚╗║╔═╗║║╔═╗║────║╔═╗║
+║╚══╗╔══╗╔╝╚╗╚╗╔╝║╚═╝║║╚═╝║──╔╗║╚═╝║
+╚══╗║║╔╗║╚╗╔╝─║║─╚══╗║║╔═╗║──╠╣║╔╗╔╝
+║╚═╝║║╚╝║─║║──║╚╗╔══╝║║╚═╝║╔╗║║║║║╚╗
+╚═══╝╚══╝─╚╝──╚═╝╚═══╝╚═══╝╚╝╚╝╚╝╚═╝
+   ░░░▒▓██  Soft98.iR ™  ██▓▒░░░
+
+
+
+- PreActive
+- Just Install & Use
+- After Install Exit IDM from Task Manager & Open IDM Again
+- To remove the previous version only use the FULL uninstall
+
